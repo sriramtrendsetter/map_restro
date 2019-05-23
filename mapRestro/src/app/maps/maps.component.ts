@@ -10,7 +10,7 @@ export class MapsComponent implements OnInit {
   // lng: string = " ";
   // city: string = " ";
   // mainLocation : Object;
-
+s
 
 
   // // lat: number = 12.9677;
@@ -59,14 +59,9 @@ export class MapsComponent implements OnInit {
   lng: number;
   zoom: number = 18;
   location: any;
-  name;
+  locationnames: any;
   ap1;
-  // locationDesc={
-  //   name:'',
-  //   desc:'',
-  //   lat:'',
-  //   lng:''
-  // }
+  
   nameOfRes:any;
   
   constructor(private map: MapServiceService){
@@ -78,7 +73,13 @@ export class MapsComponent implements OnInit {
         this.map.getApi(this.lat, this.lng).subscribe(result => {
           const api1 = result.response.groups.map(res => res.items)
           this.location = api1.map(res => res.map(res1 => res1.venue.location ))[0];
-          this.name = api1.map(res => res.map(res1 => res1.venue.name ))[0];
+          this.locationnames = api1.map(res => res.map(res1 => res1.venue))[0];
+    // console.log(this.locationnames)
+    console.log(this.locationnames)
+  // this.nameOfRes=[Object.assign({},this.name)]
+  // console.log(  this.nameOfRes)
+
+          
         })
       });
     }
@@ -90,13 +91,26 @@ export class MapsComponent implements OnInit {
 
   getLocation(lat){
     let i = 0;
-     for(let loc of this.location){  
-       if(lat == loc.lat){
-           console.log(this.name[i]);
-               this.nameOfRes=this.name[i]
-        }
-       i++;
-     }
+    //  for(let loc of this.location){  
+    //    if(lat == loc.lat){
+    //        console.log(this.locationnames[i]);
+    //            this.nameOfRes=this.locationnames[i]
+    //     }
+    //    i++;
+    //  }
+    console.log(lat);
+    
+  }
+  circleOut(label) {
+    // marker.fillColor = "#EC407A";
+    console.log(label);
+    
+  }
+  
+  circleOver(label) {
+    // marker.fillColor = "#ff0057";
+    console.log(label);
+
   }
 
 }

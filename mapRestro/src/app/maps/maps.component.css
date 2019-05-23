@@ -3,3 +3,16 @@ agm-map {
     height: 700px;
     /* width: 60%; */
   }
+
+  .text-info{
+    color: #31708f !important;
+  }
+  .mystyle{
+    display: initial;
+    margin-left: 10px;
+  }
+  .display-head{
+    font-size: 20px;
+    font-family: cursive;
+    color: black;
+  }
