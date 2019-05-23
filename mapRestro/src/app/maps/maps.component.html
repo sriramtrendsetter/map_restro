@@ -1,21 +1,21 @@
 
-<div class="container-fluid"  style="margin-top: 120px;">
+<div class="container-fluid"  >
   <div class="row">
     <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
      
 
 
       <aside class="mapContainer"  [class.fixed]="fixed">
-        <agm-map [class.fixed]="fixed"  [latitude]="lat" [longitude]="lng"  [zoom]="17" >
-          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        <agm-map [class.fixed]="fixed"  [latitude]="latitude" [longitude]="longitude"  [zoom]="16" >
+          <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
        
           <agm-marker *ngFor="let data of locationnames; let i = index" [latitude]="data.location.lat" [longitude]="data.location.lng" [label]="{
             color: '#ffffff',
             fontWeight: 'bold',
             text: (i + 1).toString()
-        }" (markerClick)="getLocation($event)"    >
-        <agm-info-window>
-          <h2>{{data.name}}</h2>
+        }" (markerClick)="getLocation($event)"   >
+        <agm-info-window class="alert alert-success">
+          <h2 class="text-info">{{data.name}}</h2>
           <span>{{data.location.formattedAddress}}</span>
           <!-- <a routerLink="">Details</a> -->
       </agm-info-window>
@@ -29,9 +29,22 @@
     </div>
     
       <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" >
+          <div class="row">
+              <div class="col-md-12">
+                <h2> Search Places</h2>
+                <div class="form-group">
+                  <label fr="place">Search google place</label>
+                  <input type="text" class="form-control" id="place"  #search [formControl]="searchControl" autocomplete="off" autocapitalize="off" spellcheck="off"/>
+                  
+                </div>
+              </div>
+              </div>
+
+
+
         <!-- <span style="color: red;" >{{nameOfRes}}</span> -->
            <span class="display-head">List of Results:</span>
-        <div class="list-group" style="    height: 700px;
+        <div class="list-group" style="   height: 550px;
         overflow: auto;">
           <a href="#" class="list-group-item " *ngFor="let data of locationnames; let i = index">
              <!-- <div class="col-md-6"> -->
@@ -49,4 +62,14 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+  
+      
+
+
 
